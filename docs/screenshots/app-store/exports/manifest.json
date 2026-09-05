@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-09-05T21:36:26.852675+00:00",
+  "canvas": {
+    "width": 1284,
+    "height": 2778
+  },
+  "device": "iPhone 17 Pro hardware frame on 6.5-inch App Store slot",
+  "displayClass": "6.5-inch",
+  "acceptedSizes": [
+    "1284x2778",
+    "1242x2688"
+  ],
+  "frameSource": "Apple Design Resources \u2014 Bezel-iPhone-17.dmg",
+  "frameColor": "Deep Blue",
+  "template": "docs/screenshots/app-store/template/compose_screenshots.py",
+  "notes": [
+    "Official Apple iPhone 17 Pro product bezel (not custom drawn).",
+    "Export targets App Store Connect 6.5-inch accepted size 1284\u00d72778 RGB.",
+    "Title sits above the device frame.",
+    "Final PNG is flattened RGB with no alpha channel.",
+    "KXSF Midnight Glass canvas + accents retained around official hardware."
+  ],
+  "shots": [
+    {
+      "id": "01-listen-live",
+      "file": "screenshots/app-store/exports/01-listen-live.png",
+      "title": "Listen live",
+      "subtitle": "Your San Francisco community radio, rebuilt.",
+      "source": "listen-now-playing.png",
+      "frame": "iphone-17-pro-deep-blue-portrait.png",
+      "width": 1284,
+      "height": 2778
+    },
+    {
+      "id": "02-shows-schedule",
+      "file": "screenshots/app-store/exports/02-shows-schedule.png",
+      "title": "Know what's on",
+      "subtitle": "Browse KXSF shows and the hosts behind them.",
+      "source": "shows-schedule.png",
+      "frame": "iphone-17-pro-deep-blue-portrait.png",
+      "width": 1284,
+      "height": 2778
+    },
+    {
+      "id": "03-kxsf-live",
+      "file": "screenshots/app-store/exports/03-kxsf-live.png",
+      "title": "Watch KXSF Live",
+      "subtitle": "Latest sessions from the official KXSF channel.",
+      "source": "kxsf-live.png",
+      "frame": "iphone-17-pro-deep-blue-portrait.png",
+      "width": 1284,
+      "height": 2778
+    },
+    {
+      "id": "04-keep-close",
+      "file": "screenshots/app-store/exports/04-keep-close.png",
+      "title": "Keep KXSF close",
+      "subtitle": "Now Playing on Home Screen and Lock Screen.",
+      "source": "home-widgets-live.png",
+      "frame": "iphone-17-pro-deep-blue-portrait.png",
+      "width": 1284,
+      "height": 2778
+    }
+  ]
+}

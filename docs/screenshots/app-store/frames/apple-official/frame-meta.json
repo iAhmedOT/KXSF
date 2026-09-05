@@ -1,0 +1,16 @@
+{
+  "source": "https://devimages-cdn.apple.com/design/resources/download/Bezel-iPhone-17.dmg",
+  "device": "iPhone 17 Pro",
+  "color": "Deep Blue",
+  "orientation": "Portrait",
+  "frameFile": "iphone-17-pro-deep-blue-portrait.png",
+  "alternateColorFile": "iphone-17-pro-silver-portrait.png",
+  "frameSize": [1350, 2760],
+  "screenBBox": [72, 69, 1277, 2690],
+  "screenSize": [1206, 2622],
+  "notes": [
+    "Official Apple Design Resources product bezel PNGs.",
+    "Screen cutout is fully transparent and matches native 1206x2622 captures 1:1.",
+    "Do not redistribute Apple bezel art outside local project use; follow Apple Design Resources license."
+  ]
+}

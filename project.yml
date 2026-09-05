@@ -1,0 +1,106 @@
+name: KXSF
+options:
+  bundleIdPrefix: com.KXSF
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "2.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: Y7PURZ5849
+packages:
+  KXSFCore:
+    path: .
+targets:
+  KXSF:
+    type: application
+    platform: iOS
+    sources:
+      - path: App/Sources
+      - path: App/Shared
+      - path: App/Assets.xcassets
+      - path: App/PrivacyInfo.xcprivacy
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: KXSF
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        ITSAppUsesNonExemptEncryption: false
+        CFBundleURLTypes:
+          - CFBundleTypeRole: Editor
+            CFBundleURLName: com.KXSF.fm.listen
+            CFBundleURLSchemes:
+              - kxsf
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+          UIImageRespectsSafeAreaInsets: false
+        NSSupportsLiveActivities: true
+        NSAppTransportSecurity:
+          NSExceptionDomains:
+            stream.kxsf.fm:
+              NSExceptionAllowsInsecureHTTPLoads: true
+        UIBackgroundModes:
+          - audio
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_ENTITLEMENTS: App/KXSF.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        PRODUCT_BUNDLE_IDENTIFIER: com.KXSF.fm
+        PRODUCT_NAME: KXSF
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - package: KXSFCore
+        product: KXSFCore
+      - target: KXSFLiveActivities
+        embed: true
+  KXSFLiveActivities:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: App/LiveActivity
+      - path: App/LiveActivitySupport
+      - path: App/Shared
+      - path: App/Assets.xcassets
+    info:
+      path: App/LiveActivity/Info.plist
+      properties:
+        CFBundleDisplayName: KXSF Live
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        CODE_SIGN_ENTITLEMENTS: App/LiveActivity/KXSFLiveActivities.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        PRODUCT_BUNDLE_IDENTIFIER: com.KXSF.fm.liveactivities
+        PRODUCT_NAME: KXSFLiveActivities
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - package: KXSFCore
+        product: KXSFCore
+  KXSFUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: App/UITests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: KXSF
+schemes:
+  KXSF:
+    build:
+      targets:
+        KXSF: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - KXSFUITests

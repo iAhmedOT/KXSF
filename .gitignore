@@ -1,0 +1,9 @@
+.DS_Store
+.build/
+*.xccheckout
+*.xcscmblueprint
+xcuserdata
+.derivedData/
+
+.derivedData-xcode26/
+build/

@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9A7CCD93-A882-4C01-8E13-19FC89119667",
+        "deviceName" : "Pixel KXSF iPhone 17 Pro",
+        "exportedFileName" : "14C846B9-BFAD-4A8C-BFA7-6FDB63E4C2D1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "About_0_BDB6C5A2-5E4D-4A03-BE3A-341C9F200BE9.png",
+        "timestamp" : 1787979662.612
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9A7CCD93-A882-4C01-8E13-19FC89119667",
+        "deviceName" : "Pixel KXSF iPhone 17 Pro",
+        "exportedFileName" : "A2796257-7D1C-427C-A4D0-FB65B8EDB64D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "KXSF Live_0_5F608452-BE49-4823-94B7-1F3E33F89DF2.png",
+        "timestamp" : 1787979662.051
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9A7CCD93-A882-4C01-8E13-19FC89119667",
+        "deviceName" : "Pixel KXSF iPhone 17 Pro",
+        "exportedFileName" : "9FB197A9-709E-45B5-8733-5E380F3D4725.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Shows_0_65FCE74D-1AB0-4854-A9E1-5B61AAC3E86C.png",
+        "timestamp" : 1787979660.25
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "9A7CCD93-A882-4C01-8E13-19FC89119667",
+        "deviceName" : "Pixel KXSF iPhone 17 Pro",
+        "exportedFileName" : "C47083A9-2991-4162-9868-AE483A2CB0D8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Listen_0_61A1A566-35AA-4505-A5B6-93FD1B78F77D.png",
+        "timestamp" : 1787979659.411
+      }
+    ],
+    "testIdentifier" : "KXSFUITests/test_bottom_navigation_reaches_station_destinations()",
+    "testIdentifierURL" : "test://com.apple.xcode/KXSF/KXSFUITests/KXSFUITests/test_bottom_navigation_reaches_station_destinations"
+  }
+]

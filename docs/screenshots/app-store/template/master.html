@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KXSF App Store Screenshot Master — iPhone 17 Pro</title>
+  <style>
+    :root {
+      --canvas-w: 1206px;
+      --canvas-h: 2622px;
+      --signal-red: #b51c24;
+      --signal-yellow: #f2c41a;
+      --media-orange: #ff781f;
+      --canvas: #050505;
+      --ink: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+      --bezel: #111111;
+      --bezel-edge: #2a2a2a;
+      --bezel-highlight: rgba(255, 255, 255, 0.18);
+      --screen-w: 948px;
+      --screen-h: 2060px;
+      --frame-radius: 88px;
+      --screen-radius: 68px;
+      --bezel: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: var(--canvas-w);
+      height: var(--canvas-h);
+      overflow: hidden;
+      background: #000;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .shot {
+      position: relative;
+      width: var(--canvas-w);
+      height: var(--canvas-h);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 90% 48% at 18% 12%, rgba(181, 28, 36, 0.34), transparent 62%),
+        radial-gradient(ellipse 70% 42% at 88% 18%, rgba(242, 196, 26, 0.14), transparent 58%),
+        radial-gradient(ellipse 80% 50% at 70% 92%, rgba(255, 120, 31, 0.10), transparent 60%),
+        radial-gradient(ellipse 100% 70% at 50% 55%, rgba(20, 20, 20, 0.9), transparent 72%),
+        linear-gradient(180deg, #0a0a0a 0%, #050505 48%, #020202 100%);
+    }
+
+    .shot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.035) 0.6px, transparent 0.7px);
+      background-size: 3px 3px;
+      opacity: 0.35;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 18%, transparent 78%, rgba(0,0,0,0.35));
+      pointer-events: none;
+    }
+
+    .copy {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      top: 118px;
+      z-index: 3;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      color: var(--signal-yellow);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .title {
+      max-width: 980px;
+      color: var(--ink);
+      font-size: 78px;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .subtitle {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.22;
+      text-wrap: balance;
+    }
+
+    .device-stage {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 430px;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: 2;
+    }
+
+    .device {
+      position: relative;
+      width: calc(var(--screen-w) + (var(--bezel) * 2));
+      height: calc(var(--screen-h) + (var(--bezel) * 2));
+      border-radius: var(--frame-radius);
+      background:
+        linear-gradient(160deg, #3a3a3a 0%, #171717 18%, #0d0d0d 55%, #1b1b1b 100%);
+      box-shadow:
+        0 40px 90px rgba(0, 0, 0, 0.55),
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+      padding: var(--bezel);
+    }
+
+    .device::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: calc(var(--frame-radius) - 7px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .device::after {
+      /* side buttons suggestion, very subtle */
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 220px;
+      width: 5px;
+      height: 110px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #4a4a4a, #1a1a1a 40%, #2d2d2d);
+      box-shadow:
+        0 150px 0 0 #2a2a2a,
+        0 280px 0 -1px #2a2a2a;
+      opacity: 0.85;
+    }
+
+    .side-buttons-left {
+      position: absolute;
+      left: -3px;
+      top: 250px;
+      width: 5px;
+      height: 70px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #4a4a4a, #1a1a1a 40%, #2d2d2d);
+      box-shadow: 0 110px 0 0 #2a2a2a;
+      opacity: 0.85;
+      z-index: 1;
+    }
+
+    .screen {
+      position: relative;
+      width: var(--screen-w);
+      height: var(--screen-h);
+      border-radius: var(--screen-radius);
+      overflow: hidden;
+      background: #000;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .island {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 168px;
+      height: 48px;
+      border-radius: 24px;
+      background: #050505;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .footer-mark {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 42px;
+      text-align: center;
+      z-index: 3;
+      color: rgba(255, 255, 255, 0.34);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* Utility for offline QA preview of multiple variants on one page. */
+    body.gallery {
+      width: auto;
+      height: auto;
+      overflow: auto;
+      background: #111;
+      padding: 40px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    body.gallery .shot {
+      flex: 0 0 auto;
+      transform: scale(0.28);
+      transform-origin: top left;
+      margin: 0 0 calc(var(--canvas-h) * -0.72) 0;
+    }
+  </style>
+</head>
+<body>
+  <article class="shot" id="shot">
+    <div class="copy">
+      <div class="eyebrow" id="eyebrow">KXSF 102.5 FM</div>
+      <h1 class="title" id="title">Listen live</h1>
+      <p class="subtitle" id="subtitle">Your San Francisco community radio, rebuilt.</p>
+    </div>
+
+    <div class="device-stage">
+      <div class="device" aria-label="iPhone 17 Pro frame">
+        <div class="side-buttons-left"></div>
+        <div class="screen">
+          <img id="screen-image" alt="App screenshot" src="" />
+          <div class="island" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-mark">San Francisco Community Radio</div>
+  </article>
+
+  <script>
+    // Query params:
+    //   title, subtitle, eyebrow, image (relative or absolute path/URL)
+    const params = new URLSearchParams(location.search);
+    const eyebrow = params.get('eyebrow');
+    const title = params.get('title');
+    const subtitle = params.get('subtitle');
+    const image = params.get('image');
+
+    if (eyebrow !== null) document.getElementById('eyebrow').textContent = eyebrow;
+    if (title !== null) document.getElementById('title').textContent = title;
+    if (subtitle !== null) document.getElementById('subtitle').textContent = subtitle;
+    if (image) document.getElementById('screen-image').src = image;
+
+    // Signal readiness for headless capture.
+    document.documentElement.dataset.ready = image ? 'waiting-image' : 'ready';
+    const img = document.getElementById('screen-image');
+    function markReady() {
+      document.documentElement.dataset.ready = 'ready';
+    }
+    if (!image) {
+      markReady();
+    } else if (img.complete && img.naturalWidth > 0) {
+      markReady();
+    } else {
+      img.addEventListener('load', markReady, { once: true });
+      img.addEventListener('error', () => {
+        document.documentElement.dataset.ready = 'error';
+      }, { once: true });
+    }
+  </script>
+</body>
+</html>
