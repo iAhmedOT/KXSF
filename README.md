@@ -4,7 +4,7 @@ Listen to KXSF 102.5 FM, see what's on, and explore the station's programming fr
 
 [View on the App Store](https://apps.apple.com/us/app/kxsf-fm/id1635505876) · [Read the case study](https://iahmedot.com/case-studies/kxsf/) · [Visit KXSF](https://kxsf.fm/)
 
-## Why we built it
+## Why the app exists
 
 The first KXSF app gave listeners a way to open the live stream. After launch, the station shared feedback that people wanted more context: which show was playing, who was hosting, and what else was on the schedule.
 
@@ -24,7 +24,7 @@ Version 2 brings that information into the listening experience. It gives listen
   <img src="docs/screenshots/app-store/sources/kxsf-live.png" alt="KXSF Live screen with videos from the station's YouTube channel" width="230">
 </p>
 
-## How we created it
+## How the app was built
 
 KXSF V2 is a native SwiftUI rebuild of the earlier iOS app. `AVPlayer` handles the radio stream, while WidgetKit and ActivityKit bring playback and show information to system surfaces.
 
@@ -32,7 +32,7 @@ The station's show information was available on its website, but not through a c
 
 Working with that content meant accounting for missing information. Host credits appear only when supplied by the station. If show artwork is missing or invalid, the app uses the KXSF logo. Retries and a last-known-good video cache help handle temporary content failures.
 
-Ahmed AlOtaibi set the product direction, worked with station feedback, identified issues, and tested the results on his iPhone. Pixel, an AI coding partner, wrote the V2 code. The work combined automated core and UI tests with physical-device checks, including checking apparent Simulator layout problems against the actual iPhone experience.
+Ahmed AlOtaibi built KXSF V2 using development tools, including an AI assistant. Station feedback informed the work, and testing combined automated core and UI tests with checks on his iPhone. Comparing Simulator results with the physical device helped distinguish app defects from Simulator discrepancies.
 
 The [full case study, “Making KXSF Easier to Tune In,”](https://iahmedot.com/case-studies/kxsf/) covers the listener feedback, source-data challenges, artwork fallback, and real-device testing behind the app.
 
