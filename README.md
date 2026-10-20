@@ -1,124 +1,62 @@
-# KXSF
+# KXSF.FM (San Francisco Community Radio iOS app)
 
-The native iOS app for **KXSF 102.5 FM, San Francisco Community Radio**.
+Listen to KXSF 102.5 FM, see what's on, and explore the station's programming from your iPhone.
 
-Listen live, check the station's schedule, and browse videos from its official YouTube channel. KXSF V2 is a SwiftUI rebuild of the earlier UIKit app. It keeps the existing app identity, `com.KXSF.fm`, and adds widgets and Live Activities for playback and show information.
+[View on the App Store](https://apps.apple.com/us/app/kxsf-fm/id1635505876) · [Read the case study](https://iahmedot.com/case-studies/kxsf/) · [Visit KXSF](https://kxsf.fm/)
 
-## Release status
+## Why we built it
 
-This repository's `main` branch contains the 2.0 application source. The recorded 2.0 submission used Xcode 26.6 with the `iphoneos26.5` SDK and was accepted for review. That submission record does not establish Apple's current review status.
+The first KXSF app gave listeners a way to open the live stream. After launch, the station shared feedback that people wanted more context: which show was playing, who was hosting, and what else was on the schedule.
 
-**The submitted 2.0 app is frozen.** Product changes belong on the 2.1 development line. Documentation updates do not change the submitted binary. See [the version freeze](docs/VERSION-FREEZE-2.0.md).
+Version 2 brings that information into the listening experience. It gives listeners one place to tune in, discover shows, browse station videos, and find ways to support San Francisco Community Radio.
 
-- App: `com.KXSF.fm`
-- Live Activity extension: `com.KXSF.fm.liveactivities`
-- Version and build: `2.0 (1)`
-- Minimum deployment target: iOS 18.0
-- Signing team: San Francisco Community Radio Inc (`Y7PURZ5849`)
-- Local release artifacts: `build/KXSF-2.0.xcarchive` and `build/export/KXSF.ipa`
-- Screenshot exports: [docs/screenshots/app-store/exports](docs/screenshots/app-store/exports), 1284 × 2778 RGB
+## The listening experience
 
-## In the app
+- **Listen:** Play the live broadcast and see current-show information when the station provides it. Audio can continue in the background.
+- **Shows:** Browse the weekly schedule, read available host information, and open official show pages.
+- **KXSF Live:** Browse recent videos from the station's official YouTube channel.
+- **About:** Find station information, social links, the KXSF website, and its donation page.
+- **Widgets and Live Activities:** Keep playback and show information close at hand outside the app.
 
-- **Listen:** Live radio through `AVPlayer`, with background audio and separate ready, connecting, playing, and failed states.
-- **Shows:** Current and upcoming programming from the official KXSF schedule pages. Host credits appear when the station supplies them.
-- **KXSF Live:** Recent uploads from [the station's YouTube channel](https://www.youtube.com/@kxsfradio/videos), with bounded retries and a last-known-good local cache.
-- **Widgets and Live Activities:** Shared playback and schedule state, with locally cached show artwork. Non-square artwork is center-cropped; missing or invalid artwork falls back to the KXSF logo.
+<p>
+  <img src="docs/screenshots/app-store/sources/listen-now-playing.png" alt="KXSF Listen screen with current-show information and the playback control" width="230">
+  <img src="docs/screenshots/app-store/sources/shows-schedule.png" alt="KXSF Shows screen with the weekly schedule" width="230">
+  <img src="docs/screenshots/app-store/sources/kxsf-live.png" alt="KXSF Live screen with videos from the station's YouTube channel" width="230">
+</p>
 
-The deep link `kxsf://listen` opens Listen.
+## How we created it
 
-## How it works
+KXSF V2 is a native SwiftUI rebuild of the earlier iOS app. `AVPlayer` handles the radio stream, while WidgetKit and ActivityKit bring playback and show information to system surfaces.
 
-```text
-Official KXSF website and YouTube channel
-                   ↓
-            KXSFCore parsers
-                   ↓
-            LiveShowStore
-                   ↓
- SwiftUI screens + KXSFAppCoordinator + AVPlayer
-                   ↓
-     App Group snapshot and artwork cache
-                   ↓
-           WidgetKit / ActivityKit
-```
+The station's show information was available on its website, but not through a clean content API. The app retrieves official pages and parses the schedule, show details, and available artwork. YouTube page parsing supplies the video list. Parsing lives in the `KXSFCore` Swift package, separate from the screens and player.
 
-The schedule and video lists come from parsing the official website and YouTube page markup, not a dedicated station content API. `KXSFCore` handles HTML entity decoding, whitespace cleanup, schedule suffix removal, and parsing of supported YouTube renderer variants.
+Working with that content meant accounting for missing information. Host credits appear only when supplied by the station. If show artwork is missing or invalid, the app uses the KXSF logo. Retries and a last-known-good video cache help handle temporary content failures.
 
-Those pages can change. Parsers skip incomplete records, retry temporary failures, and retain a non-empty cached KXSF Live list when a refresh fails. Host names are read from official show metadata or member blocks rather than hard-coded. External links let listeners open the original content.
+Ahmed AlOtaibi set the product direction, worked with station feedback, identified issues, and tested the results on his iPhone. Pixel, an AI coding partner, wrote the V2 code. The work combined automated core and UI tests with physical-device checks, including checking apparent Simulator layout problems against the actual iPhone experience.
 
-### Source layout
+The [full case study, “Making KXSF Easier to Tune In,”](https://iahmedot.com/case-studies/kxsf/) covers the listener feedback, source-data challenges, artwork fallback, and real-device testing behind the app.
 
-```text
-App/
-  Sources/              SwiftUI screens, player, coordinator, content store
-  Shared/               App Group state, design system, artwork bridge
-  LiveActivity/         WidgetKit and ActivityKit extension
-  UITests/              iOS UI regression tests
-Sources/KXSFCore/        Parsers, models, retries, cache and artwork policies
-Tests/KXSFCoreTests/     Core regression tests
-project.yml             XcodeGen configuration
-Package.swift           Swift Package test entry point
-```
+## Explore the source
 
-`project.yml` defines targets, bundle IDs, signing, capabilities, versions, and Info.plist metadata. Regenerate the Xcode project after changing it rather than editing the generated project by hand.
+- `App/Sources/`: SwiftUI screens, playback, content loading, and app coordination.
+- `App/Shared/`: Shared playback state and artwork handling.
+- `App/LiveActivity/`: Widgets and Live Activities.
+- `Sources/KXSFCore/`: Parsers, models, retry behavior, and cache policies.
+- `Tests/KXSFCoreTests/` and `App/UITests/`: Core and interface regression tests.
 
-## Build and test
-
-You need macOS, Xcode with a compatible iOS Simulator runtime, and [XcodeGen](https://github.com/yonaskolb/XcodeGen) 2.46 or later. Signed device builds and distribution also require an authorized Apple Developer account.
+To explore locally, use macOS, Xcode with a compatible iOS Simulator, and [XcodeGen](https://github.com/yonaskolb/XcodeGen). The app's deployment target is iOS 18.0 or later.
 
 ```bash
 xcodegen generate
 open KXSF.xcodeproj
 ```
 
-Run the core tests:
+Run the core tests with:
 
 ```bash
 swift test
 ```
 
-List the available destinations:
+## License and station content
 
-```bash
-xcodebuild -project KXSF.xcodeproj -scheme KXSF -showdestinations
-```
-
-Set `SIMULATOR_ID` to an available iOS Simulator UUID from that output, then build or run the UI tests:
-
-```bash
-xcodebuild \
-  -project KXSF.xcodeproj \
-  -scheme KXSF \
-  -configuration Debug \
-  -destination "platform=iOS Simulator,id=${SIMULATOR_ID:?Set SIMULATOR_ID first}" \
-  build
-
-xcodebuild \
-  -project KXSF.xcodeproj \
-  -scheme KXSF \
-  -destination "platform=iOS Simulator,id=${SIMULATOR_ID:?Set SIMULATOR_ID first}" \
-  test
-```
-
-For signed device builds or archives, use the **San Francisco Community Radio Inc** team, not a personal team.
-
-## Privacy and networking
-
-The app and extension include privacy manifests. They do not declare tracking or collected-data categories. The manifests include the UserDefaults reason `CA92.1` for local state storage.
-
-The app fetches station web content, official YouTube content, and the live stream. Its only non-HTTPS ATS exception is `stream.kxsf.fm`, because the audio endpoint uses HTTP. It uses Apple's networking and media APIs without custom cryptography; the build metadata sets `ITSAppUsesNonExemptEncryption` to `false`.
-
-## Before a release
-
-- Keep the existing App Store Connect identity, `com.KXSF.fm`.
-- Check that `group.com.KXSF.fm` is provisioned for the app and extension under the station's signing team.
-- Regenerate the project and run the core and UI tests.
-- Create a signed archive, inspect the app and embedded extension metadata, then validate and upload through Xcode.
-- Test playback, live content, widgets, Live Activities, and artwork fallback on physical hardware.
-
-## History and attribution
-
-[iAhmedOT/KXSF](https://github.com/iAhmedOT/KXSF) is the canonical V2 repository. The V1 source and history remain separate at [KXSF-Legacy-V1](https://github.com/iAhmedOT/KXSF-Legacy-V1). See [the repository history note](docs/REPO-HISTORY.md) for context.
-
-The V2 application code is available under the [MIT License](LICENSE). Station names, artwork, schedule information, and videos belong to their respective owners. The app retrieves that content from official KXSF sources.
+The application code is available under the [MIT License](LICENSE). KXSF's name, artwork, broadcasts, schedule information, and videos belong to their respective owners. Station content is retrieved from official sources.

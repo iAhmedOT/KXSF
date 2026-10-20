@@ -7,3 +7,15 @@ xcuserdata
 
 .derivedData-xcode26/
 build/
+
+# Local working notes and historical acceptance artifacts.
+/docs/CHECKPOINT-*.md
+/docs/PHASE-*.md
+/docs/TESTING-NEXT-KXSF-EXPERIENCE.md
+/docs/VERSION-FREEZE-2.0.md
+/docs/RELEASE-ROADMAP.md
+/docs/2.1-LEARNING-CHECKPOINT.md
+/docs/verification/
+/docs/screenshots/raw/
+/design-system/
+/brag-output-*/

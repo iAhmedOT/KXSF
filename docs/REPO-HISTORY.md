@@ -1,20 +1,13 @@
-# Repository history note
+# How KXSF.FM developed
 
-## What this repo is
-`https://github.com/iAhmedOT/KXSF` hosts the **KXSF V2** native iOS app: a SwiftUI listener experience for KXSF 102.5 FM.
+KXSF.FM began as an iPhone app for listening to San Francisco Community Radio's live stream. Feedback shared by the station shaped the next version: listeners wanted to know which show was on, who was hosting, and what else they could discover.
 
-## Why history was reset (2026-09-05)
-An earlier publish path pushed V2 commits on top of the old **Swift Radio Pro** / KXSF V1 git history. That made GitHub’s Contributors graph list upstream authors (Matthew Fecher, Fethi El Hassasna, and others) as if they contributed to this V2 codebase.
+The SwiftUI rebuild brought show information, a weekly schedule, official YouTube videos, station links, widgets, and Live Activities into the experience. It also addressed gaps in the station's public content, including using the KXSF logo when show artwork was unavailable.
 
-That was incorrect for interview/attribution purposes.
+Ahmed AlOtaibi led the product direction and physical-device testing. Pixel, an AI coding partner, implemented the V2 code. Automated tests supported the work, while iPhone checks helped distinguish app defects from Simulator discrepancies.
 
-This repository was **rebuilt with a clean root commit** containing only the current V2 tree. Legacy history remains available separately.
+Read [Making KXSF Easier to Tune In](https://iahmedot.com/case-studies/kxsf/) for the full account of the product decisions, source-data challenges, and testing.
 
-## Where the old history lives
-- Legacy / V1 lineage: `https://github.com/iAhmedOT/KXSF-Legacy-V1`  
-  (fork lineage related to Swift Radio Pro)
-- Local remote name in this clone (if present): `legacy`
+## Attribution
 
-## Product attribution
-- **KXSF station identity, streams, schedule, artwork, and videos** belong to San Francisco Community Radio Inc / KXSF and their respective owners.
-- **KXSF V2 application code** in this repository is the V2 rebuild work under the repo LICENSE.
+The application code is covered by the repository's [MIT License](../LICENSE). KXSF station identity, broadcasts, artwork, schedules, and videos remain the property of their respective owners.

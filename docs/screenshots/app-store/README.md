@@ -12,7 +12,6 @@ The recorded submission requirements also allowed `1242 × 2688` portrait images
 
 ```text
 docs/screenshots/
-  raw/                         Original Simulator captures
   app-store/
     sources/                   RGB app captures
     frames/apple-official/     Apple bezel assets and license
