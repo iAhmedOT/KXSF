@@ -32,7 +32,7 @@ The station's show information was available on its website, but not through a c
 
 Working with that content meant accounting for missing information. Host credits appear only when supplied by the station. If show artwork is missing or invalid, the app uses the KXSF logo. Retries and a last-known-good video cache help handle temporary content failures.
 
-Ahmed AlOtaibi built KXSF V2 using development tools, including an AI assistant. Station feedback informed the work, and testing combined automated core and UI tests with checks on his iPhone. Comparing Simulator results with the physical device helped distinguish app defects from Simulator discrepancies.
+Ahmed AlOtaibi built KXSF V2 using Xcode, Swift, SwiftUI, and an AI assistant. Station feedback informed the work, and testing combined automated core and UI tests with checks on his iPhone. Comparing Simulator results with the physical device helped distinguish app defects from Simulator discrepancies.
 
 The [full case study, “Making KXSF Easier to Tune In,”](https://iahmedot.com/case-studies/kxsf/) covers the listener feedback, source-data challenges, artwork fallback, and real-device testing behind the app.
 
