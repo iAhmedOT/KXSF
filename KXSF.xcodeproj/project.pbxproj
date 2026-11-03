@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0011F842727C1F50BA15542D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5E15D61FE2047DF84E4BDA6F /* PrivacyInfo.xcprivacy */; };
+		060289949E779FC0493722DD /* MacRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB425AD452ADD5010E5509 /* MacRadioPlayer.swift */; };
+		069F49AF7095C840FEF0059F /* KXSFMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E04D3D1900B8C328E5D831 /* KXSFMacApp.swift */; };
 		094D6C668C6E410FA500CC8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D80152DC1B02901E72759D /* Assets.xcassets */; };
 		0A070F3A0F6B6AD80891CEE0 /* InAppBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBAB2BEF484F30A681AF44F /* InAppBrowser.swift */; };
 		1E45EEB11B6F60F8A413A483 /* LiveArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDCBFB18B84472709B60C3B /* LiveArtwork.swift */; };
@@ -15,9 +17,11 @@
 		300CCE5946DDA78FA5967BAE /* KXSFAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C89E7DDA24A47D6297BB21 /* KXSFAppCoordinator.swift */; };
 		3A4542E1F1D8DD33A961BF77 /* KXSFArtworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB377FD9313CD9D2DC37AD /* KXSFArtworkRepository.swift */; };
 		3E45532A7D8A1B804E8448E2 /* KXSFLiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E6E87D9CCF79DB68CAE37F /* KXSFLiveActivityAttributes.swift */; };
+		44E06A683C94909607DF622E /* LiveShowStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA0173CBF6884E1EA273556 /* LiveShowStore.swift */; };
 		47AFF6D5F6CE4E1FA453C3F2 /* KXSFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96608C982D25B205576291AC /* KXSFUITests.swift */; };
 		4F5B1AC03835B096536B8663 /* LiveShowStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA0173CBF6884E1EA273556 /* LiveShowStore.swift */; };
 		53D9CA73AB65A43DB489AF86 /* KXSFPlaybackSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A905FA317401AD5971DD87 /* KXSFPlaybackSnapshot.swift */; };
+		5E366441E637DC06411845C1 /* KXSFCore in Frameworks */ = {isa = PBXBuildFile; productRef = 75E58CC21758E370126E50EB /* KXSFCore */; };
 		6179C1EFB0139956A2AC4B59 /* KXSFDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64207963055E01C25EF4707A /* KXSFDesignSystem.swift */; };
 		6534305A107E01EABDDB2447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D80152DC1B02901E72759D /* Assets.xcassets */; };
 		6E8DDE3DF9477423B1295913 /* StationPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35958F2510F58C20945277D /* StationPages.swift */; };
@@ -27,6 +31,7 @@
 		903830FBC6B3C310CEA6388F /* KXSFDesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64207963055E01C25EF4707A /* KXSFDesignSystem.swift */; };
 		9D493834B5F16134BEDFA290 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5B72F7755AE9FD0220E149BC /* PrivacyInfo.xcprivacy */; };
 		A70637F66608D4777BA6009B /* KXSFArtworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB377FD9313CD9D2DC37AD /* KXSFArtworkRepository.swift */; };
+		B51CFF1E84E1BA4F8DBDE64A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D80152DC1B02901E72759D /* Assets.xcassets */; };
 		B6C80587F4A18E3E625AF14F /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4B0FC982F5DECE6D29FAD0 /* AudioPlayerService.swift */; };
 		C2942660DE1A43B7CC99596E /* KXSFCore in Frameworks */ = {isa = PBXBuildFile; productRef = 11CF21B61F3CCB7BEBD744BD /* KXSFCore */; };
 		C9F662922277B25D8418CA78 /* ToggleKXSFPlaybackIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D88DA28D9117ED5BF567173 /* ToggleKXSFPlaybackIntent.swift */; };
@@ -80,6 +85,7 @@
 		2D88DA28D9117ED5BF567173 /* ToggleKXSFPlaybackIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleKXSFPlaybackIntent.swift; sourceTree = "<group>"; };
 		33238D0315E38F4B2DCB4EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4376E2A46347A4D02138B77E /* KXSFLiveActivities.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = KXSFLiveActivities.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CAB425AD452ADD5010E5509 /* MacRadioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacRadioPlayer.swift; sourceTree = "<group>"; };
 		4FDF3EC88489A697C3D4766D /* ToggleKXSFPlaybackIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleKXSFPlaybackIntent.swift; sourceTree = "<group>"; };
 		5B72F7755AE9FD0220E149BC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5E15D61FE2047DF84E4BDA6F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -91,11 +97,13 @@
 		8F2697B9FE8AA61FB1D7C2CE /* LaunchSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSplashView.swift; sourceTree = "<group>"; };
 		96608C982D25B205576291AC /* KXSFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KXSFUITests.swift; sourceTree = "<group>"; };
 		AAFB0D09C0BE51F63D3F92A6 /* KXSFLiveActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KXSFLiveActivities.swift; sourceTree = "<group>"; };
+		AB56C58DD618CD20CA3CAFAC /* KXSFMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KXSFMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A905FA317401AD5971DD87 /* KXSFPlaybackSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KXSFPlaybackSnapshot.swift; sourceTree = "<group>"; };
 		CBA54E97FD1146BBA1261FB2 /* KXSFUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KXSFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D51D3C6AB571DAA0E258CA44 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D5BB8166ECE4C4EFD37A6B29 /* KXSF */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KXSF; path = .; sourceTree = SOURCE_ROOT; };
 		D6AFCAAEE659FC249BD290AD /* KXSF.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = KXSF.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E04D3D1900B8C328E5D831 /* KXSFMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KXSFMacApp.swift; sourceTree = "<group>"; };
 		DF4B0FC982F5DECE6D29FAD0 /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 		E35958F2510F58C20945277D /* StationPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPages.swift; sourceTree = "<group>"; };
 		EBBAB2BEF484F30A681AF44F /* InAppBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppBrowser.swift; sourceTree = "<group>"; };
@@ -104,6 +112,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		52A9507ACF7A8CD153866301 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E366441E637DC06411845C1 /* KXSFCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5973B6E71EE08C7957950981 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +171,7 @@
 				DFFE6B1FC71FD15AC2C4EBC4 /* App */,
 				0FB71F8CC58BAA9406F7B6CA /* LiveActivity */,
 				EC5DC1D44D0F00185E51A276 /* LiveActivitySupport */,
+				85D33FEC994D7D2138B0CF49 /* Mac */,
 				91E54CDFA92C35AEFAF2630D /* Packages */,
 				442BBA0278A1B5ED2A809CC5 /* Shared */,
 				9EFE120E05DE47AF45DC6AA2 /* Sources */,
@@ -163,11 +180,22 @@
 			);
 			sourceTree = "<group>";
 		};
+		85D33FEC994D7D2138B0CF49 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				D6E04D3D1900B8C328E5D831 /* KXSFMacApp.swift */,
+				4CAB425AD452ADD5010E5509 /* MacRadioPlayer.swift */,
+			);
+			name = Mac;
+			path = App/Mac;
+			sourceTree = "<group>";
+		};
 		8A3102D05376EEE541224794 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				D6AFCAAEE659FC249BD290AD /* KXSF.app */,
 				4376E2A46347A4D02138B77E /* KXSFLiveActivities.appex */,
+				AB56C58DD618CD20CA3CAFAC /* KXSFMac.app */,
 				CBA54E97FD1146BBA1261FB2 /* KXSFUITests.xctest */,
 			);
 			name = Products;
@@ -252,6 +280,26 @@
 			productReference = D6AFCAAEE659FC249BD290AD /* KXSF.app */;
 			productType = "com.apple.product-type.application";
 		};
+		68A921C4216419A0DDD5223C /* KXSFMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04A2C917EB1BB483114691DD /* Build configuration list for PBXNativeTarget "KXSFMac" */;
+			buildPhases = (
+				6E18AF151F53BBCE05A2ADD0 /* Sources */,
+				FF8A45E47B718C5E76746CA0 /* Resources */,
+				52A9507ACF7A8CD153866301 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KXSFMac;
+			packageProductDependencies = (
+				75E58CC21758E370126E50EB /* KXSFCore */,
+			);
+			productName = KXSFMac;
+			productReference = AB56C58DD618CD20CA3CAFAC /* KXSFMac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A9D9FC200E172F12431A43CC /* KXSFUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB177CB3BD271BC421B7AD87 /* Build configuration list for PBXNativeTarget "KXSFUITests" */;
@@ -303,6 +351,10 @@
 						DevelopmentTeam = Y7PURZ5849;
 						ProvisioningStyle = Automatic;
 					};
+					68A921C4216419A0DDD5223C = {
+						DevelopmentTeam = Y7PURZ5849;
+						ProvisioningStyle = Automatic;
+					};
 					A9D9FC200E172F12431A43CC = {
 						DevelopmentTeam = Y7PURZ5849;
 						ProvisioningStyle = Automatic;
@@ -331,6 +383,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				68A921C4216419A0DDD5223C /* KXSFMac */,
 				661FCC7CA4E8CD0B6B990F86 /* KXSF */,
 				E57F8D471B99D1351843477C /* KXSFLiveActivities */,
 				A9D9FC200E172F12431A43CC /* KXSFUITests */,
@@ -357,6 +410,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF8A45E47B718C5E76746CA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B51CFF1E84E1BA4F8DBDE64A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -365,6 +426,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				47AFF6D5F6CE4E1FA453C3F2 /* KXSFUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E18AF151F53BBCE05A2ADD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				069F49AF7095C840FEF0059F /* KXSFMacApp.swift in Sources */,
+				44E06A683C94909607DF622E /* LiveShowStore.swift in Sources */,
+				060289949E779FC0493722DD /* MacRadioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +492,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03EE29597314A880ED7FF956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KXSF.fm;
+				PRODUCT_NAME = KXSFMac;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
 		11613FCE6EC77D5762390A4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -476,12 +567,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
@@ -502,7 +592,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KXSF.fm.liveactivities;
 				PRODUCT_NAME = KXSFLiveActivities;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -555,11 +645,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 6.0;
@@ -581,7 +670,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KXSF.fm;
 				PRODUCT_NAME = KXSF;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -599,6 +688,26 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = KXSF;
+			};
+			name = Release;
+		};
+		AC9EA6216FEC90F5CB0F0F40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KXSF.fm;
+				PRODUCT_NAME = KXSFMac;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -633,7 +742,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KXSF.fm.liveactivities;
 				PRODUCT_NAME = KXSFLiveActivities;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -652,13 +761,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KXSF.fm;
 				PRODUCT_NAME = KXSF;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		04A2C917EB1BB483114691DD /* Build configuration list for PBXNativeTarget "KXSFMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03EE29597314A880ED7FF956 /* Debug */,
+				AC9EA6216FEC90F5CB0F0F40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		69D4A9BC5BF2260B6735BBCB /* Build configuration list for PBXProject "KXSF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -706,6 +824,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		11CF21B61F3CCB7BEBD744BD /* KXSFCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KXSFCore;
+		};
+		75E58CC21758E370126E50EB /* KXSFCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KXSFCore;
 		};

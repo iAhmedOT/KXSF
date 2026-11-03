@@ -6,7 +6,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    MARKETING_VERSION: "2.0"
+    MARKETING_VERSION: "2.1"
     CURRENT_PROJECT_VERSION: "1"
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: Y7PURZ5849
@@ -14,6 +14,37 @@ packages:
   KXSFCore:
     path: .
 targets:
+  KXSFMac:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: App/Mac
+        excludes: [Info.plist]
+      - path: App/Sources/LiveShowStore.swift
+      - path: App/Assets.xcassets
+    info:
+      path: App/Mac/Info.plist
+      properties:
+        CFBundleDisplayName: KXSF
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSUIElement: true
+        ITSAppUsesNonExemptEncryption: false
+        NSAppTransportSecurity:
+          NSExceptionDomains:
+            stream.kxsf.fm:
+              NSExceptionAllowsInsecureHTTPLoads: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.KXSF.fm
+        PRODUCT_NAME: KXSFMac
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES
+    dependencies:
+      - package: KXSFCore
+        product: KXSFCore
   KXSF:
     type: application
     platform: iOS
@@ -38,6 +69,11 @@ targets:
           UIColorName: LaunchBackground
           UIImageRespectsSafeAreaInsets: false
         NSSupportsLiveActivities: true
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
         NSAppTransportSecurity:
           NSExceptionDomains:
             stream.kxsf.fm:
@@ -51,7 +87,7 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         PRODUCT_BUNDLE_IDENTIFIER: com.KXSF.fm
         PRODUCT_NAME: KXSF
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
     dependencies:
       - package: KXSFCore
         product: KXSFCore
@@ -79,7 +115,7 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         PRODUCT_BUNDLE_IDENTIFIER: com.KXSF.fm.liveactivities
         PRODUCT_NAME: KXSFLiveActivities
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
     dependencies:
       - package: KXSFCore
         product: KXSFCore
@@ -94,6 +130,12 @@ targets:
     dependencies:
       - target: KXSF
 schemes:
+  KXSFMac:
+    build:
+      targets:
+        KXSFMac: all
+    run:
+      config: Debug
   KXSF:
     build:
       targets:

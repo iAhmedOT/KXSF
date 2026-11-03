@@ -151,6 +151,76 @@ final class KXSFUITests: XCTestCase {
     }
 
     @MainActor
+    func test_ipad_portrait_and_landscape_keep_player_beside_content() throws {
+        XCUIDevice.shared.orientation = .portrait
+        let app = launchApp()
+        defer {
+            app.terminate()
+            XCUIDevice.shared.orientation = .portrait
+        }
+        try XCTSkipIf(app.windows.firstMatch.frame.width < 820, "Requires a full-width iPad window")
+        let columns = app.otherElements["station-two-column-layout"]
+        XCTAssertTrue(columns.waitForExistence(timeout: 5))
+        let play = app.buttons["playback-control"]
+        XCTAssertTrue(play.isHittable)
+        let shows = app.scrollViews.staticTexts["Shows"]
+        XCTAssertTrue(shows.waitForExistence(timeout: 5))
+        XCTAssertGreaterThan(shows.frame.minX, play.frame.maxX)
+        attachScreenshot(named: "iPad portrait two columns")
+
+        play.tap()
+        let becameLive = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", "Pause KXSF live stream"),
+            object: play
+        )
+        XCTAssertEqual(XCTWaiter.wait(for: [becameLive], timeout: 20), .completed)
+
+        for (destination, title) in [("live", "KXSF Live"), ("about", "About KXSF"), ("shows", "Shows")] {
+            let tab = app.buttons["tab-\(destination)"]
+            XCTAssertTrue(tab.isHittable)
+            tab.tap()
+            let destinationTitle = app.scrollViews.staticTexts[title]
+            XCTAssertTrue(destinationTitle.waitForExistence(timeout: 5))
+            XCTAssertTrue(destinationTitle.isHittable)
+            XCTAssertGreaterThan(destinationTitle.frame.minX, play.frame.maxX)
+            XCTAssertTrue(play.isHittable, "Player must remain available in every destination")
+            XCTAssertEqual(play.label, "Pause KXSF live stream")
+        }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let landscape = XCTNSPredicateExpectation(
+            predicate: NSPredicate { _, _ in
+                let frame = app.windows.firstMatch.frame
+                return frame.width > frame.height
+            },
+            object: nil
+        )
+        XCTAssertEqual(XCTWaiter.wait(for: [landscape], timeout: 5), .completed)
+        XCTAssertTrue(columns.waitForExistence(timeout: 5))
+        XCTAssertTrue(play.isHittable)
+        XCTAssertEqual(play.label, "Pause KXSF live stream")
+        XCTAssertTrue(shows.waitForExistence(timeout: 5))
+        XCTAssertGreaterThan(shows.frame.minX, play.frame.maxX)
+        attachScreenshot(named: "iPad landscape two columns")
+    }
+
+    @MainActor
+    func test_ipad_accessibility_text_uses_readable_single_column() throws {
+        XCUIDevice.shared.orientation = .portrait
+        let app = XCUIApplication()
+        app.launchArguments = ["-UITestSkipLaunchSplash", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        defer { app.terminate() }
+        try XCTSkipIf(app.windows.firstMatch.frame.width < 820, "Requires an iPad window")
+        let play = app.buttons["playback-control"]
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        XCTAssertTrue(play.isHittable)
+        XCTAssertFalse(app.otherElements["station-two-column-layout"].exists)
+        attachScreenshot(named: "iPad accessibility single column")
+        app.buttons["tab-shows"].tap()
+        XCTAssertTrue(app.scrollViews.staticTexts["Shows"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor
     private func attachScreenshot(named name: String) {
         let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         attachment.name = name

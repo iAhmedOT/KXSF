@@ -1,4 +1,5 @@
 import SwiftUI
+import KXSFCore
 
 struct ContentView: View {
     @ObservedObject var player: AudioPlayerService
@@ -6,21 +7,43 @@ struct ContentView: View {
     @State private var selectedTab: StationTab = .listen
     @State private var browserDestination: InAppBrowserDestination?
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         GeometryReader { geometry in
             let navigationHeight: CGFloat = 70
             let navigationSafeAreaOverlap: CGFloat = 16
+            let usesTwoColumns = StationLayout.usesTwoColumns(
+                width: Double(geometry.size.width),
+                height: Double(geometry.size.height),
+                accessibilityText: dynamicTypeSize.isAccessibilitySize
+            )
 
             ZStack {
                 StationBackdrop(isLive: player.state.isPlaying)
                     .ignoresSafeArea()
 
-                selectedDestination
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                if usesTwoColumns {
+                    HStack(alignment: .top, spacing: 24) {
+                        ListenView(player: player, liveShow: liveShow)
+                            .frame(width: 360)
+
+                        wideDestination
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                            .background(.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 28))
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 24)
+                    .padding(.bottom, 90)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityIdentifier("station-two-column-layout")
+                } else {
+                    selectedDestination
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                }
 
                 StationTabBar(selectedTab: $selectedTab)
-                    .frame(width: geometry.size.width - 40, height: navigationHeight)
+                    .frame(width: min(geometry.size.width - 40, usesTwoColumns ? 560 : .infinity), height: navigationHeight)
                     .position(
                         x: geometry.size.width / 2,
                         y: geometry.size.height + navigationSafeAreaOverlap - (navigationHeight / 2)
@@ -47,6 +70,18 @@ struct ContentView: View {
         .sheet(item: $browserDestination) { destination in
             InAppBrowser(url: destination.url)
                 .ignoresSafeArea()
+        }
+    }
+
+    @ViewBuilder
+    private var wideDestination: some View {
+        switch selectedTab {
+        case .listen, .shows:
+            ShowsView(liveShow: liveShow)
+        case .live:
+            KXSFLiveView(liveShow: liveShow)
+        case .about:
+            AboutKXSFView()
         }
     }
 
