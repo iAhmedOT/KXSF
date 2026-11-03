@@ -11,13 +11,13 @@ build/
 
 # Local recovery archives and retained demo media
 /local-archive/
-brag-output-*/
+/brag-output-*/
 
 # Python verification caches
 __pycache__/
 *.pyc
 
-# Preserve the main checkout's private-note and acceptance-artifact boundary
+# Local working notes and historical acceptance artifacts.
 /docs/CHECKPOINT-*.md
 /docs/PHASE-*.md
 /docs/TESTING-NEXT-KXSF-EXPERIENCE.md

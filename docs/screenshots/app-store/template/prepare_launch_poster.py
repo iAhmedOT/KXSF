@@ -5,9 +5,10 @@ from pathlib import Path
 
 from PIL import Image, ImageOps
 
-SRC = Path("/Users/ahmedalotaibi/.hermes/profiles/pixel/cache/images/img_449d6c8251d7.jpg")
-OUT_DIR = Path("/Users/ahmedalotaibi/Dev/KXSF/App/Assets.xcassets/LaunchPoster.imageset")
-DOCS = Path("/Users/ahmedalotaibi/Dev/KXSF/docs/assets")
+ROOT = Path(__file__).resolve().parents[4]
+DOCS = ROOT / "docs/assets"
+SRC = DOCS / "kxsf-8th-anniversary-fundraiser-launch-poster.jpg"
+OUT_DIR = ROOT / "App/Assets.xcassets/LaunchPoster.imageset"
 
 
 def main() -> None:
