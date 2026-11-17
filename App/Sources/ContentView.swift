@@ -7,49 +7,18 @@ struct ContentView: View {
     @State private var selectedTab: StationTab = .listen
     @State private var browserDestination: InAppBrowserDestination?
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    /// iPad uses the native sidebar-adaptable TabView; iPhone keeps its
+    /// existing custom bottom bar with separate Listen and Shows destinations.
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
 
     var body: some View {
-        GeometryReader { geometry in
-            let navigationHeight: CGFloat = 70
-            let navigationSafeAreaOverlap: CGFloat = 16
-            let usesTwoColumns = StationLayout.usesTwoColumns(
-                width: Double(geometry.size.width),
-                height: Double(geometry.size.height),
-                accessibilityText: dynamicTypeSize.isAccessibilitySize
-            )
-
-            ZStack {
-                StationBackdrop(isLive: player.state.isPlaying)
-                    .ignoresSafeArea()
-
-                if usesTwoColumns {
-                    HStack(alignment: .top, spacing: 24) {
-                        ListenView(player: player, liveShow: liveShow)
-                            .frame(width: 360)
-
-                        wideDestination
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                            .background(.white.opacity(0.04), in: RoundedRectangle(cornerRadius: 28))
-                    }
-                    .padding(.horizontal, 24)
-                    .padding(.top, 24)
-                    .padding(.bottom, 90)
-                    .accessibilityElement(children: .contain)
-                    .accessibilityIdentifier("station-two-column-layout")
-                } else {
-                    selectedDestination
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                }
-
-                StationTabBar(selectedTab: $selectedTab)
-                    .frame(width: min(geometry.size.width - 40, usesTwoColumns ? 560 : .infinity), height: navigationHeight)
-                    .position(
-                        x: geometry.size.width / 2,
-                        y: geometry.size.height + navigationSafeAreaOverlap - (navigationHeight / 2)
-                    )
+        Group {
+            if isPad {
+                padRoot
+            } else {
+                phoneRoot
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         .preferredColorScheme(.dark)
         .task {
@@ -73,15 +42,66 @@ struct ContentView: View {
         }
     }
 
-    @ViewBuilder
-    private var wideDestination: some View {
-        switch selectedTab {
-        case .listen, .shows:
-            ShowsView(liveShow: liveShow)
-        case .live:
-            KXSFLiveView(liveShow: liveShow)
-        case .about:
-            AboutKXSFView()
+    // MARK: iPad
+
+    /// iPad has no separate Shows destination: Listen unifies the live player
+    /// and the schedule. A stray `.shows` selection maps to Listen.
+    private var padSelection: Binding<StationTab> {
+        Binding(
+            get: { selectedTab == .shows ? .listen : selectedTab },
+            set: { selectedTab = $0 }
+        )
+    }
+
+    private var padRoot: some View {
+        TabView(selection: padSelection) {
+            Tab(StationTab.listen.title, systemImage: StationTab.listen.icon, value: StationTab.listen) {
+                padPage { ShowsView(liveShow: liveShow, player: player) }
+            }
+            Tab(StationTab.live.title, systemImage: StationTab.live.icon, value: StationTab.live) {
+                padPage { KXSFLiveView(liveShow: liveShow) }
+            }
+            Tab(StationTab.about.title, systemImage: StationTab.about.icon, value: StationTab.about) {
+                padPage { AboutKXSFView() }
+            }
+        }
+        .tabViewStyle(.sidebarAdaptable)
+        .tint(KXSFColors.signalYellow)
+    }
+
+    private func padPage<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
+        ZStack {
+            StationBackdrop(isLive: player.state.isPlaying)
+                .ignoresSafeArea()
+            content()
+                .frame(maxWidth: 820)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        }
+        .environment(\.stationBottomClearance, 24)
+    }
+
+    // MARK: iPhone
+
+    private var phoneRoot: some View {
+        GeometryReader { geometry in
+            let navigationHeight: CGFloat = 70
+            let navigationSafeAreaOverlap: CGFloat = 16
+
+            ZStack {
+                StationBackdrop(isLive: player.state.isPlaying)
+                    .ignoresSafeArea()
+
+                selectedDestination
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+
+                StationTabBar(selectedTab: $selectedTab)
+                    .frame(width: geometry.size.width - 40, height: navigationHeight)
+                    .position(
+                        x: geometry.size.width / 2,
+                        y: geometry.size.height + navigationSafeAreaOverlap - (navigationHeight / 2)
+                    )
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 
@@ -109,7 +129,7 @@ enum StationTab: String, CaseIterable, Identifiable {
         switch self {
         case .listen: "Listen"
         case .shows: "Shows"
-        case .live: "KXSF Live"
+        case .live: "KXSF Video"
         case .about: "About"
         }
     }

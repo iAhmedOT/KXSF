@@ -1,24 +1,39 @@
 import SwiftUI
 
-/// Full anniversary poster held long enough to read before the main app appears.
-/// Apple's system launch screen is cream-only (it cannot safely show this poster
-/// without cropping), so the readable art lives here for a short timed beat.
+/// Timed in-app splash for iPhone and iPad: solid black, with the official KXSF
+/// station logo large and centered. The logo is only ever scaled to fit (aspect
+/// preserved), so it is never cropped or distorted. The system launch screen is
+/// configured separately in project.yml and is untouched by this view.
 struct LaunchSplashView: View {
-    var body: some View {
-        ZStack {
-            Color("LaunchBackground")
-                .ignoresSafeArea()
+    /// Test-only: report whether app loading has begun behind the splash.
+    var loadProbeValue: String?
 
-            Image("LaunchPoster")
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 18)
-                .accessibilityLabel("KXSF 8th Anniversary Fundraiser poster for 102.5 FM San Francisco Community Radio")
+    var body: some View {
+        GeometryReader { geometry in
+            let side = min(geometry.size.width, geometry.size.height) * 0.72
+            ZStack {
+                Color.black.ignoresSafeArea()
+
+                Image("KXSFLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: side, height: side)
+                    .accessibilityHidden(true)
+
+                if let loadProbeValue {
+                    Color.clear
+                        .frame(width: 1, height: 1)
+                        .accessibilityElement()
+                        .accessibilityIdentifier("launch-splash-load-state")
+                        .accessibilityValue(loadProbeValue)
+                }
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("LaunchBackground").ignoresSafeArea())
+        .background(Color.black.ignoresSafeArea())
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("KXSF 102.5 FM San Francisco Community Radio")
+        .accessibilityIdentifier("launch-splash")
     }
 }
 

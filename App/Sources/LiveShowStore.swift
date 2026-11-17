@@ -18,6 +18,8 @@ final class LiveShowStore: ObservableObject {
     @Published private(set) var isLoading = false
     @Published private(set) var isLoadingUploads = false
     @Published private(set) var didFailToLoad = false
+    /// True once the first refresh has been requested (it does not mean it succeeded).
+    @Published private(set) var hasStartedInitialRefresh = false
 
     private var lastScheduleRefresh: Date?
     private var lastUploadsRefresh: Date?
@@ -34,6 +36,7 @@ final class LiveShowStore: ObservableObject {
     var showName: String? { currentShow?.name }
 
     func refresh() async {
+        hasStartedInitialRefresh = true
         if let lastScheduleRefresh,
            Date().timeIntervalSince(lastScheduleRefresh) < Self.refreshInterval,
            !schedule.shows.isEmpty {

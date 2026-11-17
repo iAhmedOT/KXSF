@@ -29,7 +29,6 @@ targets:
         CFBundleDisplayName: KXSF
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
-        LSUIElement: true
         ITSAppUsesNonExemptEncryption: false
         NSAppTransportSecurity:
           NSExceptionDomains:
