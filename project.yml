@@ -27,13 +27,33 @@ targets:
       path: App/Mac/Info.plist
       properties:
         CFBundleDisplayName: KXSF
+        CFBundleName: KXSF
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         ITSAppUsesNonExemptEncryption: false
+        LSApplicationCategoryType: public.app-category.music
         NSAppTransportSecurity:
           NSExceptionDomains:
             stream.kxsf.fm:
               NSExceptionAllowsInsecureHTTPLoads: true
+    postBuildScripts:
+      - name: Generate Mac AppIcon.icns
+        inputFiles:
+          - $(SRCROOT)/Scripts/make_mac_icns.sh
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-16x16@1x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-16x16@2x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-32x32@1x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-32x32@2x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-128x128@1x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-128x128@2x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-256x256@1x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-256x256@2x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-512x512@1x.png
+          - $(SRCROOT)/App/Assets.xcassets/AppIcon.appiconset/AppIcon-mac-512x512@2x.png
+        outputFiles:
+          - $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/AppIcon.icns
+        script: |
+          /bin/sh "${SRCROOT}/Scripts/make_mac_icns.sh" "${SRCROOT}/App/Assets.xcassets/AppIcon.appiconset" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppIcon.icns" "${DERIVED_FILE_DIR}"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.KXSF.fm
